@@ -10,4 +10,8 @@ def index(request):
     })
 
 def titentry(request, TITLE):
-    return HttpResponse(f"entry is , {TITLE}")
+    entrypage = util.get_entry(TITLE)
+    return render(request, "encyclopedia/entry.html",{
+        "TITLE":TITLE,
+        "ENTRYPAGE":entrypage
+    })
