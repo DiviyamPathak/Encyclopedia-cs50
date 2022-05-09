@@ -9,6 +9,7 @@ def index(request):
         "entries": util.list_entries()
     })
 
+
 def titentry(request, TITLE):
     if (util.get_entry(TITLE)== None):
         return render(request, "encyclopedia/error.html")
