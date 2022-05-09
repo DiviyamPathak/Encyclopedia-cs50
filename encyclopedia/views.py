@@ -10,9 +10,10 @@ def index(request):
     })
 
 def titentry(request, TITLE):
-    entrypage = util.get_entry(TITLE)
-    newentrypage = markdown2.markdown(entrypage)
-    return render(request, "encyclopedia/entry.html",{
-        "TITLE":TITLE,
-        "ENTRYPAGE":newentrypage
-    })
+    if (util.get_entry(TITLE)== None):
+        return render(request, "encyclopedia/error.html")
+    else:
+        return render(request, "encyclopedia/entry.html",{
+            "TITLE":TITLE,
+            "ENTRYPAGE":markdown2.markdown(util.get_entry(TITLE)),
+        })
