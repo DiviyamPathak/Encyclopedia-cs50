@@ -5,7 +5,10 @@
 {% endblock%}
 
 {% block body %}
-<p>it's a nice day {{TITLE}}</p>
+<div>
+    {{ENTRYPAGE | safe}}
+
+</div>
+
 
 {% endblock %}
-{{ENTRYPAGE}}
