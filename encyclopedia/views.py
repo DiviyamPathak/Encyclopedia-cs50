@@ -9,6 +9,17 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def search(request):
+    inputus = request.POST
+    if inputus in util.list_entries:
+        return render(request, "encyclopedia/entry.html",{
+            "TITLE":inputus,
+            "ENTRYPAGE":markdown2.markdown(util.get_entry(inputus)),
+        })
+    else: 
+        return HttpResponse(inputus, request.POST)
+
+
 
 def titentry(request, TITLE):
     if (util.get_entry(TITLE)== None):
