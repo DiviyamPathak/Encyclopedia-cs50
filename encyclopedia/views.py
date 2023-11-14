@@ -12,12 +12,9 @@ def index(request):
 def search(request):
     inputus = request.POST
     if inputus in util.list_entries:
-        return render(request, "encyclopedia/entry.html",{
-            "TITLE":inputus,
-            "ENTRYPAGE":markdown2.markdown(util.get_entry(inputus)),
-        })
+        return render(request, "encyclopedia/searchresult.html")
     else: 
-        return HttpResponse(inputus, request.POST)
+        return render(request, "encyclopedia/searchresult.html")
 
 
 
